@@ -19,7 +19,48 @@ Python web scraper that constantly monitors popular Australian car listing and a
 
 ## Installation
 
+1. Clone the repository
 ```bash
-git clone https://github.com/1shlba/car-auction-web-scraper.git
+git clone https://github.com/your-username/car-auction-web-scraper.git
 cd car-auction-web-scraper
+```
+2. Create a virtual environment
+```bash
+python -m venv venv
+```
+Activate it:
+```bash
+# Windows
+venv\Scripts\activate
+
+# macOS / Linux
+source venv/bin/activate
+```
+
+3. Install dependencies
+```bash
 pip install -r requirements.txt
+```
+4. Add in your telegram bot token and chat id
+
+Create a .env file in the root directory and add:
+```bash
+TELEGRAM_BOT_TOKEN=your_telegram_bot_token
+TELEGRAM_CHAT_ID=your_telegram_chat_id
+```
+
+Note: The .env file is ignored by Git and should never be committed for security/privacy reasons.
+
+5. Run the scraper
+```bash
+python car_monitor.py
+```
+6. Output
+
+The scraper will now search for car auction listings based on the configured criteria in the code.
+
+Matching listings are printed to the console.
+
+Notifications are sent to the configured Telegram chat when matching listings are found.
+
+
