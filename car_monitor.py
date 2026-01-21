@@ -26,11 +26,13 @@ SITES = {
 }
 
 TARGET_CARS = [
-    {"model": "z4", "min_engine": 2.5},
-    {"model": "300zx"},
-    {"model": "mr2"},
-    {"model": "mr-s"}
+    {"model": "z4", "min_engine": 2.5, "type": "car"},
+    {"model": "300zx", "type": "car"},
+    {"model": "mr2", "type": "car"},
+    {"model": "mr-s", "type": "car"},
+    {"model": "s1000rr", "min_year": 2015, "type": "bike"}
 ]
+
 # =================================================
 
 # ------------------ Helper Functions ------------------
@@ -70,18 +72,19 @@ def extract_engine(text):
 
 def matches_target(title):
     text = title.lower()
-    if not is_manual(text):
-        return False
 
     for car in TARGET_CARS:
         if car["model"] in text:
-            # Engine size check
+
+            # Manual check only for cars
+            if car.get("type") == "car" and not is_manual(text):
+                return False
+
             if "min_engine" in car:
                 engine = extract_engine(text)
                 if engine and engine < car["min_engine"]:
                     return False
 
-            # Year check
             if "min_year" in car:
                 year = extract_year(text)
                 if year and year < car["min_year"]:
@@ -90,6 +93,7 @@ def matches_target(title):
             return True
 
     return False
+
 
 
 # ------------------ Browser Setup ------------------
