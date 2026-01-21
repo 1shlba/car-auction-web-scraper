@@ -75,12 +75,22 @@ def matches_target(title):
 
     for car in TARGET_CARS:
         if car["model"] in text:
+            # Engine size check
             if "min_engine" in car:
                 engine = extract_engine(text)
                 if engine and engine < car["min_engine"]:
                     return False
+
+            # Year check
+            if "min_year" in car:
+                year = extract_year(text)
+                if year and year < car["min_year"]:
+                    return False
+
             return True
+
     return False
+
 
 # ------------------ Browser Setup ------------------
 
