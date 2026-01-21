@@ -70,6 +70,11 @@ def extract_engine(text):
     return float(match.group(1)) if match else None
 
 
+def extract_year(text):
+    match = re.search(r"(19|20)\d{2}", text)
+    return int(match.group()) if match else None
+
+
 def matches_target(title):
     text = title.lower()
 
