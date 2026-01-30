@@ -16,6 +16,7 @@ Python web scraper that constantly monitors popular Australian car listing and a
 - BMW Z4 Manual (2.5L engine or larger)
 - Nissan Z32 300zx Manual
 - Toyota MR2/MR-S Manual
+- -BMW S1000rr 2018+ Manual
 
 ## Installation
 
